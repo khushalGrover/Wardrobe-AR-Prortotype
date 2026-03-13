@@ -5,22 +5,18 @@ using UnityEngine.UI;
 
 public class WardrobeDimensionUI : MonoBehaviour
 {
-    [Header("Target")]
     public WardrobeConfig wardrobe;
 
-    [Header("Width")]
     public Slider widthSlider;
     public TMP_InputField widthInput;
 
-    [Header("Height")]
     public Slider heightSlider;
     public TMP_InputField heightInput;
 
-    [Header("Depth")]
     public Slider depthSlider;
     public TMP_InputField depthInput;
 
-    private bool updating;
+    bool updating;
 
     void Start()
     {
@@ -50,12 +46,13 @@ public class WardrobeDimensionUI : MonoBehaviour
         updating = false;
     }
 
-    // WIDTH
     void OnWidthSlider(float value)
     {
         if (updating) return;
 
         wardrobe.width = value;
+        wardrobe.Rebuild();
+
         widthInput.text = Mathf.RoundToInt(value).ToString();
     }
 
@@ -66,16 +63,19 @@ public class WardrobeDimensionUI : MonoBehaviour
         if (TryParse(text, out float v))
         {
             wardrobe.width = v;
+            wardrobe.Rebuild();
+
             widthSlider.value = v;
         }
     }
 
-    // HEIGHT
     void OnHeightSlider(float value)
     {
         if (updating) return;
 
         wardrobe.height = value;
+        wardrobe.Rebuild();
+
         heightInput.text = Mathf.RoundToInt(value).ToString();
     }
 
@@ -86,16 +86,19 @@ public class WardrobeDimensionUI : MonoBehaviour
         if (TryParse(text, out float v))
         {
             wardrobe.height = v;
+            wardrobe.Rebuild();
+
             heightSlider.value = v;
         }
     }
 
-    // DEPTH
     void OnDepthSlider(float value)
     {
         if (updating) return;
 
         wardrobe.depth = value;
+        wardrobe.Rebuild();
+
         depthInput.text = Mathf.RoundToInt(value).ToString();
     }
 
@@ -106,6 +109,8 @@ public class WardrobeDimensionUI : MonoBehaviour
         if (TryParse(text, out float v))
         {
             wardrobe.depth = v;
+            wardrobe.Rebuild();
+
             depthSlider.value = v;
         }
     }
