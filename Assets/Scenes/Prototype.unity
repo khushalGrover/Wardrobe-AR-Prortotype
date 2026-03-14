@@ -2121,7 +2121,8 @@ GameObject:
   m_Component:
   - component: {fileID: 339492192}
   - component: {fileID: 339492191}
-  - component: {fileID: 339492190}
+  - component: {fileID: 339492194}
+  - component: {fileID: 339492193}
   m_Layer: 0
   m_Name: CineCam
   m_TagString: Untagged
@@ -2129,32 +2130,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &339492190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339492189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
-  Damping: {x: 0.3, y: 0.3, z: 0.3}
-  ShoulderOffset: {x: 0, y: 0, z: 0}
-  VerticalArmLength: 0.1
-  CameraSide: 1
-  CameraDistance: 2.19
-  AvoidObstacles:
-    Enabled: 0
-    CollisionFilter:
-      serializedVersion: 2
-      m_Bits: 1
-    IgnoreTag: 
-    CameraRadius: 0.2
-    DampingIntoCollision: 0
-    DampingFromCollision: 0.5
 --- !u!114 &339492191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2206,13 +2181,73 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339492189}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02062165, y: 0.97681105, z: -0.182179, w: -0.11057049}
-  m_LocalPosition: {x: 1.368556, y: 2.472705, z: 5.975948}
+  m_LocalRotation: {x: -0.023138918, y: 0.9724007, z: -0.20441578, w: -0.11007125}
+  m_LocalPosition: {x: 2.9660668, y: 5.6164184, z: 12.941968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1480527620}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &339492193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339492189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &339492194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339492189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
+  CameraDistance: 10
+  DeadZoneDepth: 0
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 1, y: 1, z: 1}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
 --- !u!1001 &357315913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5225,8 +5260,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02062165, y: 0.97681105, z: -0.182179, w: -0.11057049}
-  m_LocalPosition: {x: 1.368556, y: 2.472705, z: 5.975948}
+  m_LocalRotation: {x: -0.023138918, y: 0.9724007, z: -0.20441578, w: -0.11007125}
+  m_LocalPosition: {x: 2.9660668, y: 5.6164184, z: 12.941968}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8785,6 +8820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   wardrobe: {fileID: 1837389435}
+  orbitController: {fileID: 0}
   followTarget: {fileID: 1259726056}
   lookAtTarget: {fileID: 540093284}
   mainCamera: {fileID: 961739752}
@@ -10318,6 +10354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WardrobeFocusController
   wardrobe: {fileID: 1837389435}
   cameraController: {fileID: 1865813614}
+  orbitController: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

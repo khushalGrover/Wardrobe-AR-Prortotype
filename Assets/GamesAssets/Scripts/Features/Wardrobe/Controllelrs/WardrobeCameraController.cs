@@ -3,7 +3,8 @@ using UnityEngine;
 public class WardrobeCameraController : MonoBehaviour
 {
     public WardrobeConfig wardrobe;
-
+    public WardrobeOrbitController orbitController;
+    
     public Transform followTarget;
     public Transform lookAtTarget;
 

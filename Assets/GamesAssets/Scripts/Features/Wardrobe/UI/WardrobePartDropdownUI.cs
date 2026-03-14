@@ -3,22 +3,35 @@ using UnityEngine;
 
 public class WardrobePartDropdownUI : MonoBehaviour
 {
-    public TMP_Dropdown dropdown;
-
-    public WardrobeFocusController focusController;
+    [SerializeField] TMP_Dropdown dropdown;
+    [SerializeField] WardrobeFocusController focusController;
 
     void Start()
     {
-        dropdown.onValueChanged.AddListener(OnDropdownChanged);
+        if (dropdown != null)
+            dropdown.onValueChanged.AddListener(OnDropdownChanged);
+    }
+
+    void OnDestroy()
+    {
+        if (dropdown != null)
+            dropdown.onValueChanged.RemoveListener(OnDropdownChanged);
     }
 
     void OnDropdownChanged(int index)
     {
+        if (focusController == null)
+            return;
+
         string selected = dropdown.options[index].text;
 
         if (System.Enum.TryParse(selected, out WardrobeConfig.PartType part))
         {
             focusController.FocusPart(part);
+        }
+        else
+        {
+            Debug.LogWarning($"Dropdown option '{selected}' does not match PartType enum.");
         }
     }
 }

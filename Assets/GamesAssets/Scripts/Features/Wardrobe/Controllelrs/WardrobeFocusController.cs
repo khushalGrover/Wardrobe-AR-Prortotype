@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class WardrobeFocusController : MonoBehaviour
 {
-    public WardrobeConfig wardrobe;
-    public WardrobeCameraController cameraController;
+    [SerializeField] WardrobeConfig wardrobe;
+    [SerializeField] WardrobeCameraController cameraController;
+    [SerializeField] WardrobeOrbitController orbitController;
 
     Dictionary<WardrobeConfig.PartType, Vector3> focusOffsets;
 
@@ -24,10 +25,11 @@ public class WardrobeFocusController : MonoBehaviour
 
     public void FocusPart(WardrobeConfig.PartType part)
     {
-        if (!focusOffsets.ContainsKey(part))
+        if (wardrobe == null || cameraController == null)
             return;
 
-        Vector3 normalized = focusOffsets[part];
+        if (!focusOffsets.TryGetValue(part, out Vector3 normalized))
+            return;
 
         Bounds bounds = wardrobe.GetWardrobeBounds();
 
@@ -38,5 +40,8 @@ public class WardrobeFocusController : MonoBehaviour
         );
 
         cameraController.FocusPoint(focusPoint);
+
+        if (orbitController != null)
+            orbitController.SetPivotPosition(focusPoint);
     }
 }
